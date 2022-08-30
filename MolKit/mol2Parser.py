@@ -390,8 +390,8 @@ class Mol2Parser(MoleculeParser):
             atom.element = atom.chemElem
             atom.number = int(atmline[0])
             self.mol.atmNum[atom.number] = atom
-            atom._coords = [[float(atmline[2]), float(atmline[3]),
-                             float(atmline[4])]]
+            atom._coords = [[float(atmline[3]), float(atmline[4]),
+                             float(atmline[5])]]
             if len(atmline) >= 9:
                 atom._charges['mol2'] = float(atmline[8])
                 atom.chargeSet = 'mol2'
