@@ -319,6 +319,7 @@ class Mol2Parser(MoleculeParser):
         self.mol.levels = [Protein, Chain, Residue, Atom]
         i = 1
         for atmline in atomlines:
+            atmline = atmline.split()
             if len(atmline) >= 10:
                 status = atmline[9].split('|')
             else: status = None
@@ -390,8 +391,8 @@ class Mol2Parser(MoleculeParser):
             atom.element = atom.chemElem
             atom.number = int(atmline[0])
             self.mol.atmNum[atom.number] = atom
-            atom._coords = [[float(atmline[3]), float(atmline[4]),
-                             float(atmline[5])]]
+            atom._coords = [[float(atmline[2]), float(atmline[3]),
+                             float(atmline[4])]]
             if len(atmline) >= 9:
                 atom._charges['mol2'] = float(atmline[8])
                 atom.chargeSet = 'mol2'
